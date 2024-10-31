@@ -4,7 +4,6 @@ import requests
 def getWeather():
     try:
         apiKey = 'b62d99636369937d5de85404d8a8f7ca'
-
         baseURL = "http://api.openweathermap.org/data/2.5/weather"
         
         city = CityinputText.get()
