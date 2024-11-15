@@ -1,6 +1,6 @@
 import pygame
 import random
-
+import math
 pygame.init()
 
 background = pygame.image.load('Pygame/Space Galaxy Background.jpg')
@@ -29,10 +29,11 @@ playerX_change = 0
 #bullet
 bullet_X= 0
 bullet_Y= 480
-
 bullet_Xchange = 0
 bullet_Ychange = 0.4
 bullet_status = "ready"
+
+score = 0
 
 #Coordinates of entity
 def player(x,y):
@@ -46,6 +47,13 @@ def fireBullet(x,y):
     bullet_status = 'GO'
     screen.blit(bullet_Img,(x,y))
 
+def iscollision(enemy_x,enemy_y,bullet_x,bullet_y):
+    distance = math.sqrt(math.pow(enemy_x - bullet_x, 2) + math.pow(enemy_y - bullet_y, 2))
+    if distance < 27:
+        return True
+    else:
+        return False
+
 running  = True
 
 while running:
@@ -58,7 +66,6 @@ while running:
             running = False
 
         if event.type == pygame.KEYDOWN: 
-            # print('Pressed Keydown')
 
             if event.key == pygame.K_LEFT:
                 playerX_change = -0.3
@@ -67,7 +74,6 @@ while running:
                 playerX_change = 0.3
 
             if event.key == pygame.K_SPACE:
-                # bullet_status = "GO"
                 if  bullet_status is 'ready':
                     bullet_status == "GO"
                     bullet_X = playerX+16
@@ -102,12 +108,17 @@ while running:
         if bullet_Y < 0:
             bullet_Y = 480
             bullet_status = 'ready' 
- 
-    # if bullet_status is "GO":
-    #     fireBullet(playerX,bullet_Y)
-    #     if bullet_Y < 0:
-    #         bullet_Y = 480
-    #         bullet_status = 'ready'  
+    
+    #collision
+    collision = iscollision(Enemy_X,Enemy_Y,bullet_X,bullet_Y)
+    if collision:
+        bullet_Y = 480
+        bullet_status = 'ready'
+
+        score += 1
+        print(score)
+        Enemy_X= random.randint(1,750)
+        Enemy_Y= random.randint(50,150)
     
     
     pygame.display.update()
