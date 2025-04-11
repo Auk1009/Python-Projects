@@ -18,5 +18,3 @@ while(True):
     if numGussing(inputNumber,generatedNumber) :
         score = score + 1
     print("Your score is:", score)
-
-
