@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "../apiProjects"
+		},
+		{
+			"path": "../basics_practice"
+		},
+		{
+			"path": "../calculators"
+		},
+		{
+			"path": "../file_handling"
+		},
+		{
+			"path": "../Flask"
+		},
+		{
+			"path": "../list_code"
+		},
+		{
+			"path": "../Pygame"
+		},
+		{
+			"path": "../random_lib_code"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../weather"
+		},
+		{
+			"path": "../web_Projects"
+		}
+	]
+}
